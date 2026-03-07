@@ -1,0 +1,21 @@
+.container {
+    min-height: 800px !important;
+    padding: 40px 0 !important;
+    display: flex !important;
+    align-items: center !important;
+    animation: color-change-3x 4s linear infinite alternate both !important;
+}
+
+@keyframes color-change-3x {
+    0% {
+        background: #ffe2e3;
+    }
+
+    50% {
+        background: #edc9ae;
+    }
+
+    100% {
+        background: #eab9fa;
+    }
+}
