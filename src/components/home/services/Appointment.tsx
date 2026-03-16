@@ -21,31 +21,46 @@ import { DateTimePicker } from '@mui/x-date-pickers/DateTimePicker';
 import dayjs, { Dayjs } from 'dayjs';
 
 export const AVAILABLE_SERVICES = [
+    { value: "uñas", label: "Uñas" },
     { value: "manicura", label: "Manicura" },
     { value: "pedicura", label: "Pedicura" },
-    { value: "cejas y pestañas", label: "Cejas & Pestañas" },
-    { value: "maquillaje", label: "Maquillaje" },
-    { value: "pircing nariz", label: "Pircing Nariz" },
-    { value: "pircing oreja", label: "Pircing Oreja" },
-    { value: "pircing ombligo", label: "Pircing Ombligo" },
+    { value: "cejas", label: "Cejas" },
 ];
 
 interface AppointmentProps {
-    open: boolean;
-    handleClose: () => void;
     service?: string;
+    children?: React.ReactElement;
 }
 
-export function Appointment({ open, handleClose, service }: AppointmentProps) {
+export function Appointment({ service, children }: AppointmentProps) {
+    const [open, setOpen] = useState(false);
+
+    const handleOpen = () => setOpen(true);
+    const handleClose = () => setOpen(false);
+
     return (
-        <Dialog open={open} onClose={handleClose} fullWidth maxWidth="sm">
-            <DialogTitle sx={{ textAlign: 'center', fontWeight: 'bold' }}>
+        <>
+            <Button
+                variant={'primaryButton' as any}
+                onClick={handleOpen}
+                sx={{
+                    borderRadius: "60px",
+                    padding: "10px 40px",
+                    fontSize: "18px",
+                }}
+            >
                 Agendar Cita
-            </DialogTitle>
-            <DialogContent>
-                <AppointmentForm service={service} onSuccess={handleClose} onCancel={handleClose} />
-            </DialogContent>
-        </Dialog>
+            </Button>
+            {children && React.cloneElement(children as React.ReactElement<any>, { onClick: handleOpen })}
+            <Dialog open={open} onClose={handleClose} fullWidth maxWidth="sm">
+                <DialogTitle sx={{ textAlign: 'center', fontWeight: 'bold' }}>
+                    Agendar Cita
+                </DialogTitle>
+                <DialogContent>
+                    <AppointmentForm service={service} onSuccess={handleClose} onCancel={handleClose} />
+                </DialogContent>
+            </Dialog>
+        </>
     );
 }
 
@@ -63,13 +78,15 @@ export function AppointmentForm({ service, onSuccess, onCancel }: AppointmentFor
         email: "",
         phone_number: "",
         services: "",
-        schedule: dayjs() as Dayjs | null,
+        schedule: null as Dayjs | null,
     });
 
     useEffect(() => {
-        if (service) {
-            setFormData((prev) => ({ ...prev, services: service.toLowerCase() }));
-        }
+        setFormData((prev) => ({
+            ...prev,
+            schedule: prev.schedule || dayjs(),
+            services: service ? service.toLowerCase() : prev.services
+        }));
     }, [service]);
 
     const handleChange = (e: any) => {
@@ -95,7 +112,7 @@ export function AppointmentForm({ service, onSuccess, onCancel }: AppointmentFor
             `*Servicio:* ${formData.services}%0A` +
             `*Fecha y Hora:* ${formattedDate}`;
 
-        const whatsappNumber = "523329619210";
+        const whatsappNumber = "523329303896";
         const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${message}`;
 
         // Simulate loading for better UX and redirect

@@ -13,17 +13,6 @@ function Footer() {
       <Box
         component={Paper}
         elevation={5}
-        sx={{
-          height: '520px',
-          backgroundImage: "url('/img/footerimg.jpg')",
-          backgroundSize: 'cover',
-          backgroundPosition: "center",
-          backgroundRepeat: "no-repeat",
-        }} />
-
-      <Box
-        component={Paper}
-        elevation={5}
         sx={{ minHeight: '400px', backgroundImage: "linear-gradient(to right, #eab8fe, #edcaa8)", py: 4 }}>
         <Container>
           <Grid container spacing={4}>
@@ -41,7 +30,7 @@ function Footer() {
                     fontStyle: "italic",
                   }}
                 >
-                  <b>+52 1 33 2961 9210</b>
+                  <b>+52 1 33 2930 3896</b>
                 </Typography>
                 <Typography
                   sx={{
@@ -49,9 +38,11 @@ function Footer() {
                     textShadow: "1px 1px 4px black",
                     fontSize: "24px",
                     fontStyle: "italic",
+                    wordBreak: "break-word",
+                    overflowWrap: "break-word"
                   }}
                 >
-                  <b>email@gmail.com</b>
+                  <b>katherne.naomi.rm@gmail.com</b>
                 </Typography>
                 <Typography
                   sx={{
@@ -77,13 +68,13 @@ function Footer() {
             sx={{
               color: "white",
               textShadow: "1px 1px 4px grey",
-              fontSize: "30px",
+              fontSize: "16px",
               fontStyle: "italic",
             }}
           >
-            <b>moon nalis studio</b>
+            Copyright© 2026 <b style={{ fontFamily: "var(--font-cinzel)", fontSize: "20px", textTransform: 'none' }}>Moon Nail Studio</b>. All rights reserved.
           </Typography>
-          <Grid>
+          <Grid sx={{ display: 'flex', flexDirection: { xs: "column", md: "row" }, justifyContent: 'center', alignItems: 'center' }}>
 
             <InstagramIcon fontSize='large' sx={{ color: 'white', m: '0 16px' }} />
             <WhatsAppIcon fontSize='large' sx={{ color: 'white' }} />

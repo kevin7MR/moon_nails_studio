@@ -7,6 +7,7 @@ import {
   CardMedia,
   Container,
   Grid,
+  Paper,
   Stack,
   Typography,
 } from "@mui/material";
@@ -20,7 +21,6 @@ import type { StaticImageData } from "next/image";
 import React, { useState } from "react";
 import styles from "./styles.module.scss";
 import { AppointmentForm } from "./Appointment";
-
 
 const SERVICES = [
   {
@@ -75,13 +75,19 @@ function Services() {
   };
 
   return (
-    <Box className={styles['container']}>
+    <><Box className={styles['container']}>
       <Container maxWidth="lg">
         <Typography
           align="center"
           fontSize={"50px"}
           color="white"
-          sx={{ textShadow: "1px 1px 4px black", pb: "40px", pt: "20px" }}
+          sx={{
+            textShadow: "1px 1px 4px black",
+            pb: "40px",
+            pt: "20px",
+            fontFamily: "var(--font-cinzel)",
+            fontWeight: 800
+          }}
         >
           <b>Nuestros Servicios</b>
         </Typography>
@@ -103,8 +109,7 @@ function Services() {
                 <CardMedia
                   sx={{ height: 200 }}
                   image={typeof category.img === "string" ? category.img : (category.img as StaticImageData).src}
-                  title={category.title}
-                />
+                  title={category.title} />
                 <CardContent sx={{ flexGrow: 1 }}>
                   <Typography gutterBottom variant="h5" component="div" sx={{ fontWeight: 'bold' }}>
                     {category.title}
@@ -142,7 +147,17 @@ function Services() {
 
         <AppointmentForm />
       </Container>
-    </Box>
+    </Box><Box
+        component={Paper}
+        elevation={5}
+        sx={{
+          display: { xs: "none", md: "block" },
+          height: '520px',
+          backgroundImage: "url('/img/footerimg.jpg')",
+          backgroundSize: 'cover',
+          backgroundPosition: "center",
+          backgroundRepeat: "no-repeat",
+        }} /></>
   );
 }
 

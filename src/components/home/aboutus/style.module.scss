@@ -1,0 +1,73 @@
+.aboutUsSection {
+    background-color: black !important;
+}
+
+.mainContainer {
+    height: auto !important;
+    display: flex !important;
+    justify-content: space-between !important;
+    align-items: center !important;
+    gap: 40px !important;
+
+    @media (max-width: 900px) {
+        height: auto !important;
+        flex-direction: column !important;
+        padding: 60px 20px !important;
+        text-align: center !important;
+    }
+}
+
+.textGrid {
+    width: 50% !important;
+
+    @media (max-width: 900px) {
+        width: 100% !important;
+    }
+}
+
+.description {
+    font-size: 20px !important; // Slightly smaller base for better readability
+    color: white !important;
+    line-height: 1.6 !important;
+
+    @media (max-width: 600px) {
+        font-size: 18px !important;
+    }
+
+    b {
+        display: block !important;
+        font-size: 48px !important;
+        margin-bottom: 24px !important;
+        font-family: var(--font-cinzel) !important;
+        line-height: 1.2 !important;
+
+        @media (max-width: 900px) {
+            font-size: 36px !important;
+        }
+
+        @media (max-width: 600px) {
+            font-size: 28px !important;
+        }
+    }
+}
+
+.aboutUsImage {
+    width: 380px !important;
+    height: auto !important;
+    border-radius: 60px !important;
+    padding: 16px 0 !important;
+
+    @media (max-width: 900px) {
+        width: 100% !important;
+        max-width: 400px !important;
+    }
+}
+
+.decorativeSection {
+    min-height: 399px !important;
+    background-image: url('/img/dizza.png') !important;
+    background-size: cover !important;
+    background-position: center !important;
+    background-repeat: no-repeat !important;
+
+}
